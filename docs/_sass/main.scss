@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  margin: 0;
+}
+
+.sidebar {
+  background: $black;
+  color: $text-white;
+  flex-shrink: 0;
+  height: 100vh;
+  overflow: auto;
+  position: sticky;
+  top: 0;
+  width: 260px;
+}
+
+.sidebar .expander {
+  cursor: pointer;
+  display: none;
+  height: 3em;
+  position: absolute;
+  right: 1em;
+  top: 1.5em;
+  width: 3em;
+}
+
+.sidebar .expander .arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: block;
+  height: 0.7em;
+  margin: 1em auto;
+  transform: rotate(45deg);
+  transition: transform 0.5s;
+  width: 0.7em;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+.sidebar .header {
+  background: $black;
+  padding: 2em;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.sidebar .header a {
+  color: $text-white;
+  text-decoration: none;
+}
+
+.sidebar h1 {
+  font-size: 1.5em;
+}
+
+.sidebar h2 {
+  color: $gray-light;
+  font-size: 0.8em;
+  font-weight: normal;
+  margin-bottom: 0.8em;
+  padding-left: 2.5em;
+  text-transform: uppercase;
+}
+
+.sidebar nav {
+  width: 100%;
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  margin-bottom: 1em;
+  padding: 0;
+
+  &:last-child {
+    margin-bottom: 2em;
+  }
+
+  a {
+   text-decoration: none;
+  }
+
+  li {
+    color: $text-white;
+    padding-left: 2em;
+    text-decoration: none;
+  }
+
+  li.active {
+    background: $border-gray-darker;
+    font-weight: bold;
+  }
+
+  li:hover {
+    background: $border-gray-darker;
+  }
+}
+
+.main {
+  width: 100%;
+}
+
+.main .main-inner {
+  margin: 2em;
+}
+
+@media all and (max-width: 700px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    height: auto;
+    position: relative;
+    width: 100%;
+  }
+
+  .sidebar .expander {
+    display: block;
+  }
+
+  .sidebar nav {
+    height: 0;
+    overflow: hidden;
+  }
+
+  #nav-toggle:checked {
+    & ~ nav {
+      height: auto;
+    }
+
+    & + .expander .arrow {
+      transform: rotate(-135deg);
+    }
+  }
+}
