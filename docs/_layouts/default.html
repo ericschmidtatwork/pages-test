@@ -11,7 +11,7 @@
   <body>
     <div class="sidebar">
       <div class="header">
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: "Documentation" }}</a></h1>
+        <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "Documentation" }}</a></h1>
       </div>
       <input type="checkbox" id="nav-toggle">
       <label for="nav-toggle" class="expander">
@@ -22,7 +22,7 @@
         <h2>{{ item.section }}</h2>
         <ul>
           {% for subitem in item.items %}
-          <a href="{{subitem.url}}">
+          <a href="{{subitem.url | relative_url }}">
             <li class="{% if subitem.url == page.url %}active{% endif %}">
               {{ subitem.title }}
             </li>
